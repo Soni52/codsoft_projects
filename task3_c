@@ -1,0 +1,65 @@
+# Define an empty dictionary to store contacts
+contacts = {}
+
+# Function to add a contact
+def add_contact(name, phone):
+    if name not in contacts:
+        contacts[name] = phone
+        print(f"Contact for {name} added successfully!")
+    else:
+        print(f"{name} is already in the contact book.")
+
+# Function to remove a contact
+def remove_contact(name):
+    if name in contacts:
+        del contacts[name]
+        print(f"Contact for {name} removed successfully!")
+    else:
+        print(f"{name} not found in the contact book.")
+
+# Function to update a contact
+def update_contact(name, phone):
+    if name in contacts:
+        contacts[name] = phone
+        print(f"Contact for {name} updated successfully!")
+    else:
+        print(f"{name} not found in the contact book.")
+
+# Function to display all contacts
+def list_contacts():
+    if not contacts:
+        print("Contact book is empty.")
+    else:
+        print("Contacts:")
+        for name, phone in contacts.items():
+            print(f"{name}: {phone}")
+
+# Main loop to interact with the user
+while True:
+    print("\nOptions:")
+    print("1. Add a contact")
+    print("2. Remove a contact")
+    print("3. Update a contact")
+    print("4. List all contacts")
+    print("5. Quit")
+
+    choice = input("Enter your choice (1/2/3/4/5): ")
+
+    if choice == "1":
+        name = input("Enter the contact's name: ")
+        phone = input("Enter the contact's phone number: ")
+        add_contact(name, phone)
+    elif choice == "2":
+        name = input("Enter the contact's name to remove: ")
+        remove_contact(name)
+    elif choice == "3":
+        name = input("Enter the contact's name to update: ")
+        phone = input("Enter the updated phone number: ")
+        update_contact(name, phone)
+    elif choice == "4":
+        list_contacts()
+    elif choice == "5":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
